@@ -1,5 +1,6 @@
 package com.unixi.authapp.data.source.remote
 
+import android.util.Log
 import com.unixi.authapp.data.model.UserData
 import com.unixi.authapp.util.BackendUrlProvider
 import io.ktor.client.HttpClient
@@ -24,7 +25,7 @@ class AuthRemoteDataSource(
         qrToken: String
     ): RemoteResult<UserData> {
         val url = backendUrlProvider.buildResolveQrUrl(endpoint)
-
+        Log.d("AuthRemoteDataSource", "resolveQr url = $url")
         return executeRequest<UserData>(url) {
             setBody(
                 QrResolveRequest(
