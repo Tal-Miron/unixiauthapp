@@ -8,6 +8,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.unixi.authapp.scan.ScanScreen
+import com.unixi.authapp.auth.AuthScreen
 
 @Composable
 fun AppNavGraph(
@@ -33,13 +34,14 @@ fun AppNavGraph(
         composable(
             route = UnixiDestinations.AUTH_ROUTE
         ) {
-            // AuthScreen(
-            //     onAuthenticationSuccess = navigationActions::navigateToSuccess,
-            //     onAuthenticationFailure = {
-            //         navigationActions.navigateToError("Wrong password")
-            //     }
-            // )
+             AuthScreen(
+                 onNavigateToSuccess = navigationActions::navigateToSuccess,
+                 onNavigateToError = {
+                     navigationActions.navigateToError("Wrong password")
+                 }
+             )
         }
+/*
 
         composable(
             route = UnixiDestinations.ERROR_ROUTE,
@@ -59,8 +61,9 @@ fun AppNavGraph(
             //     onTryAgain = navigationActions::popBack
             // )
         }
+*/
 
-        composable(
+/*        composable(
             route = UnixiDestinations.SUCCESS_ROUTE
         ) {
             // SuccessScreen(
@@ -72,6 +75,6 @@ fun AppNavGraph(
             route = UnixiDestinations.HOME_ROUTE
         ) {
             // HomeScreen()
-        }
+        }*/
     }
 }
