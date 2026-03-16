@@ -1,4 +1,4 @@
-package com.unixi.authapp
+package com.unixi.authapp.util
 
 import android.content.Context
 import android.content.pm.PackageManager

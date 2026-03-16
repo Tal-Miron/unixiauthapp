@@ -1,5 +1,6 @@
 [versions]
 agp = "9.0.1"
+navigationCompose = "2.8.0"
 kotlin = "2.0.21"
 koin = "4.0.0"
 coreKtx = "1.18.0"
@@ -17,6 +18,7 @@ mlkitBarcode = "17.2.0"
 accompanistPermissions = "0.34.0"
 
 [libraries]
+androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
