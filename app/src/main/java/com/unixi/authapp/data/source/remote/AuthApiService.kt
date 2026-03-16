@@ -12,8 +12,8 @@ import retrofit2.http.Url
 
 @Serializable
 data class LoginRequestBody(
-    @SerialName("user_id")
-    val userId: String
+    @SerialName("qr_token")
+    val qrToken: String
 )
 
 @Serializable

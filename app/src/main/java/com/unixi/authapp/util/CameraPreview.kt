@@ -89,7 +89,7 @@ private fun bindCameraUseCases(
     val preview = Preview.Builder()
         .build()
         .also { cameraPreview ->
-            cameraPreview.surfaceProvider = previewView.surfaceProvider
+            cameraPreview.setSurfaceProvider(previewView.surfaceProvider)
         }
 
     val scannerOptions = BarcodeScannerOptions.Builder()
