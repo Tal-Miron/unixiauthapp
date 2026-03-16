@@ -2,49 +2,75 @@ package com.unixi.authapp.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 
-// ── Route Constants ──────────────────────────────────────────
-object AppRoutes {
-    const val SCAN = "scan"
-    const val AUTH = "auth"
-    const val ERROR = "error"
-    const val SUCCESS = "success"
-    const val HOME = "home"
-}
-
-// ── NavGraph ─────────────────────────────────────────────────
 @Composable
 fun AppNavGraph(
-    modifier: Modifier = Modifier,
-    navController: NavHostController = rememberNavController()
+    modifier: Modifier = Modifier
 ) {
+    val navController = rememberNavController()
+    val navigationActions = UnixiNavigationActions(navController)
+
     NavHost(
         navController = navController,
-        startDestination = AppRoutes.SCAN,
+        startDestination = UnixiDestinations.SCAN_ROUTE,
         modifier = modifier
     ) {
-        composable(AppRoutes.SCAN) {
-            // ScanScreen() — coming soon
+        composable(
+            route = UnixiDestinations.SCAN_ROUTE
+        ) {
+            // ScanScreen(
+            //     onNavigateToAuth = navigationActions::navigateToAuth,
+            //     onShowError = navigationActions::navigateToError
+            // )
         }
 
-        composable(AppRoutes.AUTH) {
-            // AuthScreen() — coming soon
+        composable(
+            route = UnixiDestinations.AUTH_ROUTE
+        ) {
+            // AuthScreen(
+            //     onAuthenticationSuccess = navigationActions::navigateToSuccess,
+            //     onAuthenticationFailure = {
+            //         navigationActions.navigateToError("Wrong password")
+            //     }
+            // )
         }
 
-        composable(AppRoutes.ERROR) {
-            // ErrorScreen() — coming soon
+        composable(
+            route = UnixiDestinations.ERROR_ROUTE,
+            arguments = listOf(
+                navArgument(UnixiNavigationArgs.ERROR_MESSAGE) {
+                    type = NavType.StringType
+                    nullable = true
+                    defaultValue = null
+                }
+            )
+        ) { backStackEntry ->
+            val errorMessage = backStackEntry.arguments
+                ?.getString(UnixiNavigationArgs.ERROR_MESSAGE)
+
+            // ErrorScreen(
+            //     message = errorMessage ?: "Authentication failed",
+            //     onTryAgain = navigationActions::popBack
+            // )
         }
 
-        composable(AppRoutes.SUCCESS) {
-            // SuccessScreen() — coming soon
+        composable(
+            route = UnixiDestinations.SUCCESS_ROUTE
+        ) {
+            // SuccessScreen(
+            //     onContinue = navigationActions::navigateToHome
+            // )
         }
 
-        composable(AppRoutes.HOME) {
-            // HomeScreen() — coming soon
+        composable(
+            route = UnixiDestinations.HOME_ROUTE
+        ) {
+            // HomeScreen()
         }
     }
 }

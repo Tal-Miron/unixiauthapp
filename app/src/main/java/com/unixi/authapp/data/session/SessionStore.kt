@@ -20,7 +20,5 @@ class SessionStore {
         userData = null
     }
 
-    fun isActive(): Boolean {
-        return endpoint != null && userData != null
-    }
+    fun isActive(): Boolean = endpoint != null && userData != null
 }
