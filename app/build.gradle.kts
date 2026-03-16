@@ -42,15 +42,18 @@ android {
         isCoreLibraryDesugaringEnabled = false
     }
 
-    kotlin {
-        jvmToolchain(11)
-    }
+
+}
+
+kotlin {
+    jvmToolchain(11)
 }
 
 dependencies {
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
+   // implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.compose.ui)
@@ -80,7 +83,7 @@ dependencies {
     implementation(libs.camera.camera2)
     implementation(libs.camera.lifecycle)
     implementation(libs.camera.view)
-
+    implementation(libs.androidx.lifecycle.runtime.compose)
     // ML Kit
     implementation(libs.mlkit.barcode)
 
