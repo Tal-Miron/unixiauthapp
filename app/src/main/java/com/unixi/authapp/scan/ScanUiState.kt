@@ -12,6 +12,14 @@ sealed class ScanDialogState {
 
     data object NotFound : ScanDialogState()
 
+    data class InvalidFormat(
+        val message: String
+    ) : ScanDialogState()
+
+    data class InvalidUrl(
+        val message: String
+    ) : ScanDialogState()
+
     data class UnknownError(
         val message: String? = null
     ) : ScanDialogState()

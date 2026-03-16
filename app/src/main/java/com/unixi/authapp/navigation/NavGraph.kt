@@ -7,6 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.unixi.authapp.scan.ScanScreen
 
 @Composable
 fun AppNavGraph(
@@ -23,10 +24,10 @@ fun AppNavGraph(
         composable(
             route = UnixiDestinations.SCAN_ROUTE
         ) {
-            // ScanScreen(
-            //     onNavigateToAuth = navigationActions::navigateToAuth,
-            //     onShowError = navigationActions::navigateToError
-            // )
+             ScanScreen(
+                 onNavigateToAuth = navigationActions::navigateToAuth,
+                 onShowError = navigationActions::navigateToError
+             )
         }
 
         composable(
