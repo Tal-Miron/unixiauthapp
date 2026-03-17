@@ -1,0 +1,15 @@
+services:
+  api:
+    build: .
+    container_name: unixi-api
+    environment:
+      - PORT=8080
+    expose:
+      - "8080"
+
+  tunnel:
+    image: cloudflare/cloudflared:latest
+    container_name: unixi-tunnel
+    command: tunnel --no-autoupdate --url http://api:8080
+    depends_on:
+      - api
