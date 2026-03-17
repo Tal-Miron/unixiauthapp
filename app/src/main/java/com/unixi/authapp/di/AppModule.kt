@@ -18,11 +18,7 @@ val appModule = module {
         )
     }
 
-    single {
-        NetworkMonitor(
-            context = androidContext()
-        )
-    }
+
 
     single {
         BackendUrlProvider()
