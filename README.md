@@ -4,7 +4,7 @@ Android application built in Kotlin using Android Studio with Jetpack Compose fo
 
 
 ## How to run:
-1. Open and run the server file, instructions in it's ReadME (python run.py)
+1. Download, open and run the server file, instructions in it's ReadME (python run.py)
 2. Run the application using a physical android with a camera (if used, emulator will only simulate a room for the camera)
 3. Scan the qrcodes from the terminal, each will provide a different result
 
