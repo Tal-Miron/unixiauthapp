@@ -98,13 +98,15 @@ The project follows a clean, layered structure with separation of concerns:
 
 ---
 
-##Assumptions:
+## Assumptions:
 1. Client is always connected to network. 
 2. Only valid password values are entered.
 
 ---
 
 Package Manager With explanations:
+
+```
 
 app/
 ├── UnixiApplication.kt              ← Application class, startKoin with all 3 modules
@@ -171,6 +173,7 @@ app/
             ├── AuthApiService.kt         ← Retrofit interface, POST /auth/login and POST /auth/validate
             └── AuthRemoteDataSource.kt   ← calls AuthApiService, returns raw Response, all suspend funs
 
+```
 
 ---
 
