@@ -1,12 +1,12 @@
 # Unixi Auth App
 
-Android application built in Kotlin usinf Android Studio with Jetpack Compose for the Unixi junior mobile developer assignment.
+Android application built in Kotlin using Android Studio with Jetpack Compose for the Unixi junior mobile developer assignment.
 
 
 ## How to run:
-1. open and run the server file, instructions in it's ReadME (python run.py)
-2. run the application using a physical android with a camera (if used, emulator will only simulate a room for the camera)
-3. scan the qrcodes from the terminal, each will provide a different result
+1. Open and run the server file, instructions in it's ReadME (python run.py)
+2. Run the application using a physical android with a camera (if used, emulator will only simulate a room for the camera)
+3. Scan the qrcodes from the terminal, each will provide a different result
 
 ---
 
