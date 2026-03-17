@@ -42,7 +42,7 @@ The main application contains two tabs:
 
 ---
 
-##QrDecoding:
+## QrDecoding:
 
 1. Each QR code contains a signed JWT (HS256). The JWT holds two claims: 
 	a. qrToken - readable plaintext, tamper-proof via JWT signature
@@ -174,7 +174,7 @@ app/
 
 ---
 
-##Notes:
+## Notes:
 1. I have chosen Koin only because Hiltnis genuinely broken right now as of early 2026.
 4. Although not required, I did choose to add a rate limiter for entering passwords and scanning Qrs.
 
