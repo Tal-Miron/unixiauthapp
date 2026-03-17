@@ -3,7 +3,7 @@
 A mock REST API for the Unixi mobile assignment, served over HTTPS via a Cloudflare tunnel with zero configuration required.
 
 ## Architecture
-
+'''
 Android App
     │
     ▼ HTTPS (trusted certificate)
@@ -11,7 +11,7 @@ Android App
     │
     ▼ HTTP
 [ FastAPI container ]
-
+'''
 
 ## Prerequisites
 
