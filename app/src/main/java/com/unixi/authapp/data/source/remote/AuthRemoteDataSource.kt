@@ -9,6 +9,7 @@ import io.ktor.client.plugins.ClientRequestException
 import io.ktor.client.plugins.ServerResponseException
 import io.ktor.client.request.post
 import io.ktor.client.request.setBody
+import io.ktor.client.statement.bodyAsText
 import io.ktor.http.ContentType
 import io.ktor.http.contentType
 import kotlinx.serialization.SerialName
@@ -17,8 +18,9 @@ import java.io.IOException
 
 class AuthRemoteDataSource(
     private val httpClient: HttpClient,
-    private val backendUrlProvider: BackendUrlProvider
+    private val backendUrlProvider: BackendUrlProvider,
 ) {
+
 
     suspend fun resolveQr(
         endpoint: String,
@@ -37,15 +39,17 @@ class AuthRemoteDataSource(
 
     suspend fun validatePassword(
         endpoint: String,
-        email: String,
+        userId: String,
         password: String
-    ): RemoteResult<AuthMessageResponse> {
+    ): RemoteResult<ValidateAuthResponse> {
         val url = backendUrlProvider.buildValidatePasswordUrl(endpoint)
-
-        return executeRequest<AuthMessageResponse>(url) {
+        Log.d("AuthRemoteDataSource", "validatePassword url=$url")
+        Log.d("AuthRemoteDataSource", "validatePassword userId=$userId")
+        Log.d("AuthRemoteDataSource", "validatePassword password=$password")
+        return executeRequest<ValidateAuthResponse>(url) {
             setBody(
                 PasswordValidationRequest(
-                    email = email,
+                    userId = userId,
                     password = password
                 )
             )
@@ -61,6 +65,11 @@ class AuthRemoteDataSource(
                 contentType(ContentType.Application.Json)
                 configureBody()
             }
+
+            val rawBody = response.bodyAsText()
+            Log.d("AuthRemoteDataSource", "url=$url")
+            Log.d("AuthRemoteDataSource", "status=${response.status.value}")
+            Log.d("AuthRemoteDataSource", "body=$rawBody")
 
             RemoteResult.Success(
                 body = response.body(),
@@ -92,6 +101,8 @@ class AuthRemoteDataSource(
 
 sealed class RemoteResult<out T> {
 
+
+
     data class Success<T>(
         val body: T,
         val code: Int
@@ -116,14 +127,16 @@ data class QrResolveRequest(
 
 @Serializable
 data class PasswordValidationRequest(
-    @SerialName("email")
-    val email: String,
+    @SerialName("user_id")
+    val userId: String,
     @SerialName("password")
     val password: String
 )
 
 @Serializable
-data class AuthMessageResponse(
-    @SerialName("message")
-    val message: String
+data class ValidateAuthResponse(
+    @SerialName("authenticated")
+    val authenticated: Boolean,
+    @SerialName("error")
+    val error: String? = null
 )

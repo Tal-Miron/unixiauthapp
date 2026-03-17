@@ -1,5 +1,6 @@
 package com.unixi.authapp.data.repository
 
+import android.util.Log
 import com.unixi.authapp.data.model.PasswordValidationResult
 import com.unixi.authapp.data.session.SessionStore
 import com.unixi.authapp.data.source.remote.AuthRemoteDataSource
@@ -24,20 +25,22 @@ class PasswordRepository(
         return when (
             val result = authRemoteDataSource.validatePassword(
                 endpoint = endpoint,
-                email = userData.email,
+                userId = userData.userId,
                 password = password
             )
         ) {
             is RemoteResult.Success -> {
-                PasswordValidationResult.Success(
-                    message = result.body.message
-                )
+                if (result.body.authenticated) {
+                    PasswordValidationResult.Success(
+                        message = "Authentication successful"
+                    )
+                } else {
+                    PasswordValidationResult.WrongPassword
+                }
             }
 
             is RemoteResult.Error -> {
                 when (result.code) {
-                    404 -> PasswordValidationResult.WrongPassword
-
                     RemoteResult.NETWORK_ERROR_CODE -> {
                         PasswordValidationResult.Failure(
                             code = PasswordValidationResult.NETWORK_ERROR_CODE,

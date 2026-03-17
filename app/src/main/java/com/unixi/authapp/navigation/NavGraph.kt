@@ -9,6 +9,9 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.unixi.authapp.scan.ScanScreen
 import com.unixi.authapp.auth.AuthScreen
+import com.unixi.authapp.success.SuccessScreen
+import com.unixi.authapp.error.ErrorScreen
+import com.unixi.authapp.home.HomeScreen
 
 @Composable
 fun AppNavGraph(
@@ -41,7 +44,7 @@ fun AppNavGraph(
                  }
              )
         }
-/*
+
 
         composable(
             route = UnixiDestinations.ERROR_ROUTE,
@@ -56,25 +59,27 @@ fun AppNavGraph(
             val errorMessage = backStackEntry.arguments
                 ?.getString(UnixiNavigationArgs.ERROR_MESSAGE)
 
-            // ErrorScreen(
-            //     message = errorMessage ?: "Authentication failed",
-            //     onTryAgain = navigationActions::popBack
-            // )
+             ErrorScreen(
+                 message = errorMessage ?: "Authentication failed",
+                 onTryAgain = navigationActions::popBack
+             )
         }
-*/
 
-/*        composable(
-            route = UnixiDestinations.SUCCESS_ROUTE
-        ) {
-            // SuccessScreen(
-            //     onContinue = navigationActions::navigateToHome
-            // )
-        }
 
         composable(
-            route = UnixiDestinations.HOME_ROUTE
+            route = UnixiDestinations.SUCCESS_ROUTE
         ) {
-            // HomeScreen()
-        }*/
+             SuccessScreen(
+                 onContinue = navigationActions::navigateToHome
+             )
+        }
+
+
+        composable(
+        route = UnixiDestinations.HOME_ROUTE
+        ) {
+         HomeScreen()
+        }
+
     }
 }
