@@ -3,7 +3,7 @@
 Android application built in Kotlin usinf Android Studio with Jetpack Compose for the Unixi junior mobile developer assignment.
 
 
-##How to run:
+## How to run:
 1. open and run the server file, instructions in it's ReadME (python run.py)
 2. run the application using a physical android with a camera (if used, emulator will only simulate a room for the camera)
 3. scan the qrcodes from the terminal, each will provide a different result
