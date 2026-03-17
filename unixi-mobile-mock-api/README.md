@@ -34,7 +34,7 @@ Run (bash):
 docker compose down
 
 ## Project structure
-
+```
 unixi-mobile-mock-api/
 ├── main.py
 ├── Dockerfile
@@ -43,3 +43,4 @@ unixi-mobile-mock-api/
 ├── qr_generator.py
 ├── .env
 └── README.md
+```
