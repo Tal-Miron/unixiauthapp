@@ -181,3 +181,5 @@ app/
 1. I have chosen Koin only because Hiltnis genuinely broken right now as of early 2026.
 4. Although not required, I did choose to add a rate limiter for entering passwords and scanning Qrs.
 
+## Video
+(https://github.com/Tal-Miron/unixiauthapp/blob/main/Screen_Recording_20260317_095028_Unixi%20Auth%20App.mp4)
