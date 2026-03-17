@@ -100,7 +100,7 @@ The project follows a clean, layered structure with separation of concerns:
 
 ## Assumptions:
 1. Client is always connected to network. 
-2. Only valid password values are entered.
+2. User input is considered trusted, as no input validation is required.
 
 ---
 
